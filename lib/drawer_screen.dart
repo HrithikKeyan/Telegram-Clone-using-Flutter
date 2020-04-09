@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class DrawerScreenState extends State<DrawerScreen> {
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
-            arrowColor: Colors.white,
+            
             accountName: new Text(
               "Karthikeyan",
               style: new TextStyle(fontSize: 15.0),
@@ -26,6 +27,33 @@ class DrawerScreenState extends State<DrawerScreen> {
                   "https://avatars1.githubusercontent.com/u/39880947?s=460&u=dccd0d58d1c7bea1117cc2232d1d812785ca66dd&v=4"),
             ),
           ),
+          new Padding(padding: EdgeInsets.only(top:5.0)),
+         new Row(
+           
+           children: <Widget>[
+             new Padding(padding: EdgeInsets.only(left:10.0)),
+             Badge(
+             badgeColor: Color(0xFF4FCE5F),
+             badgeContent: new Icon(Icons.done, color:Colors.white, size: 13.0,),
+            
+             position: BadgePosition.bottomRight(),
+             
+             child: new CircleAvatar(
+               backgroundImage: NetworkImage("https://avatars1.githubusercontent.com/u/39880947?s=460&u=dccd0d58d1c7bea1117cc2232d1d812785ca66dd&v=4"),
+              
+             ),),
+             new Padding(padding: EdgeInsets.symmetric(horizontal: 20.0
+             
+             ),
+             child: new Text("Karthikeyan", style: new TextStyle(fontSize: 15.0)),
+             )
+           ],
+         ),
+          DrawerListTile(
+            icons: Icons.add,
+            lists: "Add Account",
+          ),
+          new Divider(),
           DrawerListTile(
             icons: Icons.supervisor_account,
             lists: "New Group",
@@ -54,6 +82,7 @@ class DrawerScreenState extends State<DrawerScreen> {
             icons: Icons.settings,
             lists: "Settings",
           ),
+          new Divider(),
           DrawerListTile(
             icons: Icons.person_add,
             lists: "Invite Friends",
@@ -73,7 +102,7 @@ class DrawerListTile extends StatelessWidget {
   final String lists;
   
 
-  const DrawerListTile({this.icons, this.lists, });
+  const DrawerListTile({this.icons, this.lists });
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +112,7 @@ class DrawerListTile extends StatelessWidget {
       leading: Icon(icons),
       title: new Text(
         lists,
-        style: new TextStyle(fontSize: 14.0),
+        style: new TextStyle(fontSize: 15.0),
       ),
     );
   }
